@@ -174,6 +174,7 @@ function Board({size, userMaze, systemMaze}) {
   
   const reMatch = () => {
     setOver(false);
+    setSystemTurn(false)
      cells.forEach((row,rowInx) => {
       row.forEach((col, colIndx) => {
         cells[rowInx][colIndx] = ''
