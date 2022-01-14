@@ -15,6 +15,7 @@ function Board({size, userMaze, systemMaze}) {
   const [winComb, setWinComb] = useState([]);
   const [counter, setCounter] = useState('')
   const t = {3: 60, 4: 120, 5: 180};
+  const [started, setStarted] = useState(false)
 
 
   useEffect(()=> {
@@ -46,11 +47,12 @@ function Board({size, userMaze, systemMaze}) {
        setWinComb(win_3)
       break;
      }
+     setStarted(false)
      setTimer(t[size])
   },[size])
 
   useEffect(()=>{
-    checkPlayedAll();
+     checkPlayedAll();
     if(systemTurn){
       pauseTimer()
     } else{
@@ -66,6 +68,8 @@ function Board({size, userMaze, systemMaze}) {
 
 
   const userPlay = (id) => {
+    setStarted(true);
+    
     if (!over){
       const p = id.split('-');
       setCells(prev=>{
@@ -249,9 +253,7 @@ function Board({size, userMaze, systemMaze}) {
         });
       });
     }
-    console.log(win)
     const score = largeScore(win);
-    console.log(score)
 
     if(maze === systemMaze) { 
      const count = (score && score.maxCount?score.maxCount: 0);
@@ -273,6 +275,7 @@ function Board({size, userMaze, systemMaze}) {
   }
 
   const checkPlayedAll = () => {
+   if(started){
     let playedAll = true;
     cells.forEach((row,rowInx) => {
       row.forEach((col, colIndx) => {
@@ -286,6 +289,7 @@ function Board({size, userMaze, systemMaze}) {
       setOver(true);
       toast.info('The match is draw')
     }
+  }
   }
   
   const reMatch = () => {
