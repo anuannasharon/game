@@ -19,28 +19,26 @@ function App() {
 
 
   return (
-    <div className="container-fluid">
      <div className="row pt-2">
-     <div className="col-md-6">
-      <div className="card">
-        <div className="card-header d-flex justify-content-between">
-           <div className="d-flex">
-            <label className="me-2">Levels</label>
-            <MazeOptions setMazeSize={setMazeSize}/>
-           </div>
-           <div className="d-flex">
-            <label className="me-2">Choose your maze</label>
-            <UserMaze setUserMaze={setUserMaze}/>
-           </div>
-        </div>
-        <div className="card-body">
-          {
-            size != 0 ? <Board size="3" size={size} userMaze={userMaze} systemMaze={systemMaze}/>: <div>No Maze Selected</div>
-          }
+      <div className="col-md-12">
+        <div className="card">
+          <div className="card-header d-flex justify-content-between">
+             <div class="form-group">
+              <label className="me-2 pb-1">Levels</label>
+              <MazeOptions setMazeSize={setMazeSize}/>
+            </div>
+             <div class="form-group">
+              <label className="me-2 pb-1">Choose Maze</label>
+              <UserMaze setUserMaze={setUserMaze}/>
+            </div>
+          </div>
+          <div className="card-body">
+            {
+              size != 0 ? <Board size="3" size={size} userMaze={userMaze} systemMaze={systemMaze}/>: <div>No Maze Selected</div>
+            }
+          </div>
         </div>
       </div>
-      </div>
-     </div>
     </div>
   );
 }
@@ -50,7 +48,7 @@ const MazeOptions = ({setMazeSize}) => {
   const options = {
     0: 'Select Maze',
     3: '3X3',
-    // 4: '4X4',
+    4: '4X4',
     // 5: '5X5'
   };
 
