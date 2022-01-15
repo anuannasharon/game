@@ -38,7 +38,7 @@ function Board({size, userMaze, systemMaze}) {
         setCombination(comb_4)
         setWinComb(win_4);
       break;
-      case 4:
+      case 5:
         setCombination(comb_5)
         setWinComb(win_5);
       break;
@@ -69,7 +69,7 @@ function Board({size, userMaze, systemMaze}) {
 
   const userPlay = (id) => {
     setStarted(true);
-    
+
     if (!over){
       const p = id.split('-');
       setCells(prev=>{
@@ -158,9 +158,9 @@ function Board({size, userMaze, systemMaze}) {
             return [...prev]
           })
       } else {
-         combinations[userPlayId].forEach(d=>{
-           if(cells[d[0]][d[1]] == '' && !systemPlayed) {
 
+         combinations[userPlayId].forEach(d=>{
+           if(cells[d[0]][d[1]] === '' && !systemPlayed) {
             setCells(prev=>{
               prev[d[0]][d[1]] = systemMaze;
               return [...prev]

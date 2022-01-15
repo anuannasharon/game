@@ -23,7 +23,7 @@ function App() {
       <div className="col-md-12">
         <div className="card">
           <div className="card-header d-flex justify-content-between">
-             <div class="form-group">
+             <div className="form-group">
               <label className="me-2 pb-1">Levels</label>
               <MazeOptions setMazeSize={setMazeSize}/>
             </div>
@@ -49,7 +49,7 @@ const MazeOptions = ({setMazeSize}) => {
     0: 'Select Maze',
     3: '3X3',
     4: '4X4',
-    // 5: '5X5'
+    5: '5X5'
   };
 
   return (
